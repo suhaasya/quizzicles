@@ -1,0 +1,37 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+body{
+    background: #F5F7FB;
+    padding: 2% 10%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    font-family: 'Karla', sans-serif;
+    color:#293264;
+}
+.start-page{
+    font-size: 1rem;
+
+}
+.title{
+    font-weight: 700;
+    font-size: 2rem;
+}
+.descr{
+    margin: 1rem 0;
+}
+.btn{
+    padding: 1rem 3rem;
+    font-weight: 500;
+    border: none;
+    outline: none;
+    color: white;
+    background: #293264;
+    border-radius: 1rem;
+    cursor: pointer;
+}

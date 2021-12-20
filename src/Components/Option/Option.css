@@ -1,0 +1,8 @@
+.option{
+    border: 1px solid;
+    width: max-content;
+    border-radius: 3rem;
+    padding: 0.125rem 0.75rem;
+    margin: 1rem 1rem 1rem 0;
+    cursor: pointer;
+}
