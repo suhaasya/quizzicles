@@ -4,12 +4,18 @@ import './Option.css'
 export default function Option(props) {
 
     function handleClick(){
-        props.setOpts(prev=>{
-            const newArr = prev.map((opt,i)=>{
-               const o = i===props.id ? {...opt, isHeld: !opt.isHeld}: {...opt, isHeld:false}
-                return o
+        props.setQuiz(prev=>{
+            const newQuiz = prev.map((quiz,i)=>{
+                const newOption = quiz.options.map((opt,i)=>{
+                    if(opt.title===props.optValue){
+                        return {...opt, isHeld: !opt.isHeld}
+                    }else{
+                        return {...opt}
+                    }
+                })
+                return {...quiz, options: newOption};
             })
-            return newArr
+            return newQuiz;
         })
     }
 
