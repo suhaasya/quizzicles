@@ -6,16 +6,18 @@ export default function Option(props) {
         background: props.isSelected ? '#D6DBF5' : '#F5F7FB' 
     }
     
-    console.log(props.submitClick, props.correct_answer, props.answer);
+    // console.log(props.submitClick, props.correct_answer, props.answer);
     if(props.submitClick){
         if(props.correct_answer===props.answer){
             style = {
-                background: '#00ff00'
+                background: '#94D7A2',
+                borderColor: '#94D7A2'
             }
         }
         if((props.correct_answer!==props.answer)&&props.isSelected){
             style = {
-                background: '#ff0000'
+                background: '#F8BCBC',
+                borderColor: '#F8BCBC'
             }
         }
     }

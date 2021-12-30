@@ -1,14 +1,19 @@
 
+import { useState } from 'react';
 import './App.css';
-import Quiz from './quizzical/Quiz';
 import QuizPage from './quizzical/QuizPage';
 import Start from './quizzical/Start';
 
+
 function App() {
+
+  const [quizPage, setQuizPage] = useState(false)
+
   return (
     <div className="App">
-      {/* <Start/> */}
-      <QuizPage />
+      
+      
+      {quizPage ? <QuizPage /> : <Start setQuizPage={setQuizPage}/>}
     </div>
   );
 }

@@ -1,3 +1,4 @@
+// eslint-disable
 import React, { useState, useEffect } from 'react'
 import Button from '../Components/button/Button'
 import Quiz from './Quiz'
@@ -36,22 +37,32 @@ export default function QuizPage() {
     }, [])
 
     const correct_answers = quiz.map(quiz=>quiz.correct_answer)
-    console.log(correct_answers)
+    // console.log(correct_answers)
     function submit(){
-        setDisAns(true)
-        setSubmitClick(true)
+        if(selectedAnswers[1]===undefined){
+            alert('Please select the answers');
+        }else{
+            setDisAns(true)
+            setSubmitClick(prev=>!prev)
+        }
         for(let i=0; i<quiz.length; i++){
-            console.log(correct_answers[i], selectedAnswers[i]);
-            correct_answers[i]===selectedAnswers[i].answer ? 
+            // console.log(selectedAnswers[i]);
+            
+            correct_answers[i]===selectedAnswers[i]?.answer ? 
             setTotal(prev=>{
-                console.log(prev++)
-                return prev++;
-
+                    // console.log(prev++)
+                    const a = prev++ 
+                    return prev++;
             }): 
             setTotal(prev=>{
                 return prev;
             });
         }
+        
+    }
+
+    function newGame(){
+        window.location.reload(false)
     }
 
     return (
@@ -62,8 +73,8 @@ export default function QuizPage() {
             correct_answer={quiz.correct_answer}
             submitClick={submitClick}
             />)}
-            {disAns && <p>You got {total}/5</p>}
-            <Button title='Check Answers' submit={submit}/>
+            {disAns && <p className="answerPara">You got {total}/5</p>}
+            {submitClick ? <Button title='New Game' submit={newGame}/>:<Button title='Check Answers' submit={submit}/>}
         </div>
     )
 }

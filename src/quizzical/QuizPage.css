@@ -9,3 +9,8 @@
     border-radius: 1rem;
     cursor: pointer; 
 }
+
+.answerPara{
+    font-weight: 700;
+    margin-bottom: 1rem;
+}
