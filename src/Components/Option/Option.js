@@ -2,30 +2,37 @@ import React from 'react'
 import './Option.css'
 
 export default function Option(props) {
-
-    function handleClick(){
-        props.setQuiz(prev=>{
-            const newQuiz = prev.map((quiz,i)=>{
-                const newOption = quiz.options.map((opt,i)=>{
-                    if(opt.title===props.optValue){
-                        return {...opt, isHeld: !opt.isHeld}
-                    }else{
-                        return {...opt}
-                    }
-                })
-                return {...quiz, options: newOption};
-            })
-            return newQuiz;
-        })
+    let style = {
+        background: props.isSelected ? '#D6DBF5' : '#F5F7FB' 
+    }
+    
+    console.log(props.submitClick, props.correct_answer, props.answer);
+    if(props.submitClick){
+        if(props.correct_answer===props.answer){
+            style = {
+                background: '#00ff00'
+            }
+        }
+        if((props.correct_answer!==props.answer)&&props.isSelected){
+            style = {
+                background: '#ff0000'
+            }
+        }
     }
 
-    const style = {
-        background: props.isHeld ? '#D6DBF5' : '#F5F7FB'
+    function handleClick(){
+        props.setAnswers(prev=>{
+            const updatedAnswers = prev.map((ans,i)=>{
+                const updatedAns = i === props.id ? {...ans, isSelected:!ans.isSelected} : {...ans, isSelected:false}
+                return updatedAns
+            })
+            return updatedAnswers;
+        })
     }
 
     return (
         <div>
-            <p className='option' style={style} onClick={handleClick}>{props.optValue}</p>
+            <p className='option' style={style} onClick={handleClick}>{props.answer}</p>
         </div>
     )
 }
